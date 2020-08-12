@@ -5,7 +5,7 @@ import sys
 import logging
 from flask_cors import CORS
 
-app = flask.Flask(__name__)
+app = flask.Flask(__name__,static_url_path='')
 app.config["DEBUG"] = True
 cors = CORS(app) 
 
@@ -15,9 +15,14 @@ scope = [ "https://storage.azure.com/.default" ]
 secret = "<secret>"
 endpoint = "https://storage.azure.com/"
 
+
 @app.route('/', methods=['GET'])
 def home():
     return "response from the API from promgraf with CORS enabled"
+
+@app.route('/index')
+def index():
+    return app.send_static_file('index.html')
 
 @app.route('/token', methods=['GET'])
 def fetchToken():

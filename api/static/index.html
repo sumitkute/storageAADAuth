@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<script src=".\js\azure-storage-blob.js" charset="utf-8"></script>
+<script src="azure-storage-blob.js" charset="utf-8"></script>
 <body>
     <button id="generate-token">Generate Token</button>
     <input type="text" id="token"/>
@@ -14,7 +14,7 @@
 </body>
 
  <script>
-     
+   
 const selectButton = document.getElementById("select-button");
 const fileInput = document.getElementById("file-input");
 const listButton = document.getElementById("list-button");
@@ -30,7 +30,7 @@ var blobUri = 'https://' + accountName + '.blob.core.windows.net/'+ containerNam
 const gettoken = async () =>
 {
     try {
-        fetch("http://0.0.0.0/token") // relace it with your dns if hosted seperately
+        fetch("http://<public-ip or local-ip>/token") // relace it with your dns if hosted seperately
         .then(function (response) {
             if(response.ok) 
                 return response.text();
